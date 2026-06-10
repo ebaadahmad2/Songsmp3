@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebaad Ahmad - Bio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Your custom background image with an overlay for text readability */
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+                        url('https://www.image2url.com/r2/default/images/1781070513586-305059f1-9cb7-4e95-850a-e92e35cdffc4.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Original Premium Glassmorphism Dark Card Container */
+        .bio-container {
+            background: rgba(10, 10, 12, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        /* Profile Area */
+        .avatar {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        /* Clean Name Text */
+        .profile-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        /* Bio text block layout */
+        .bio-text {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem 1.25rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            list-style: none;
+        }
+
+        .bio-text li {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bio-text li:last-child {
+            margin-bottom: 0;
+        }
+
+        .bio-text li::before {
+            content: "•";
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Icon Grid Button Layout */
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .divider {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.12);
+            margin: 1.25rem 0;
+        }
+
+        /* Dark Audio Player Layout */
+        .audio-player {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .player-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .player-header i {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .song-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-current {
+            width: 0%;
+            height: 100%;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .control-btn {
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.2s;
+        }
+
+        .control-btn:hover {
+            color: #ffffff;
+        }
+
+        .play-pause-btn {
+            font-size: 1.4rem;
+        }
+
+        /* Modern Custom Notification Pop-up style */
+        .toast-notification {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: rgba(255, 255, 255, 0.95);
+            color: #111113;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bio-container">
+        <div class="toast-notification" id="toast">Copied!</div>
+
+        <img class="avatar" src="https://www.image2url.com/r2/default/images/1781070920267-29c54000-052e-4b24-8adc-d707a3973cc2.jpg" alt="Ebaad Ahmad Profile">
+        
+        <h1 class="profile-name">Ebaad Ahmad</h1>
+        
+        <ul class="bio-text">
+            <li>I am a Web Developer</li>
+            <li>I am a Graphic Designer</li>
+            <li>I am an Editor</li>
+            <li>I am a Discord Bot Dev</li>
+        </ul>
+        
+        <div class="social-grid">
+            <a href="https://discord.gg/7W3Ut47qZ6" class="icon-btn" target="_blank" title="Discord">
+                <i class="fa-brands fa-discord"></i>
+            </a>
+            <a href="#" class="icon-btn" title="Copy Bitcoin Address" id="btc-btn">
+                <i class="fa-brands fa-bitcoin"></i>
+            </a>
+            <a href="#" class="icon-btn" title="Copy Ethereum Address" id="eth-btn">
+                <i class="fa-brands fa-ethereum"></i>
+            </a>
+        </div>
+
+        <hr class="divider">
+
+        <div class="audio-player">
+            <audio id="bio-audio" src="song.mp3" autoplay loop></audio>
+
+            <div class="player-header">
+                <i class="fa-solid fa-volume-high"></i>
+                <div class="song-title" id="player-song-title">My Track</div>
+            </div>
+            
+            <div class="progress-container">
+                <span id="current-time">00:00</span>
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress-current" id="progress-current"></div>
+                </div>
+                <span id="total-duration">00:00</span>
+            </div>
+
+            <div class="player-controls">
+                <i class="fa-solid fa-backward-step control-btn" onclick="restartSong()"></i>
+                <i class="fa-solid fa-circle-pause control-btn play-pause-btn" id="play-btn" onclick="togglePlay()"></i>
+                <i class="fa-solid fa-forward-step control-btn"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Media Track Management Elements
+        const audio = document.getElementById('bio-audio');
+        const playBtn = document.getElementById('play-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressCurrent = document.getElementById('progress-current');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('total-duration');
+        const toast = document.getElementById('toast');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.classList.remove('fa-circle-play');
+                playBtn.classList.add('fa-circle-pause');
+            } else {
+                audio.pause();
+                playBtn.classList.add('fa-circle-play');
+                playBtn.classList.remove('fa-circle-pause');
+            }
+        }
+
+        function restartSong() {
+            audio.currentTime = 0;
+        }
+
+        function formatTime(time) {
+            if (isNaN(time)) return "00:00";
+            const mins = Math.floor(time / 60);
+            const secs = Math.floor(time % 60);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progressCurrent.style.width = `${percent}%`;
+            }
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audio.duration);
+        });
+
+        progressBar.addEventListener('click', (e) => {
+            const width = progressBar.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+            if (duration) {
+                audio.currentTime = (clickX / width) * duration;
+            }
+        });
+
+        // Toast trigger handler for copy functionality
+        function triggerToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            // Explicitly clears token notice after 3 seconds (3000ms)
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Crypto Address Constants & Copy Logic Controller
+        const btcAddress = "bc1qvz037x5367h4mu4qp43ftsu94ec77r7n848k0c";
+        const ethAddress = "0x9ad5a0Fe5B277AD2b9D61be0ed6c7724bA2b15ea";
+
+        document.getElementById('btc-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(btcAddress);
+            triggerToast("Bitcoin Address Copied!");
+        });
+
+        document.getElementById('eth-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(ethAddress);
+            triggerToast("Ethereum Address Copied!");
+        });
+    </script>
+</body>
+                                                                         </html>
+                                                                         
